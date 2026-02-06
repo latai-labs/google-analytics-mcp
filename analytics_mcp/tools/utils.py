@@ -20,6 +20,7 @@ from google.analytics import admin_v1beta, data_v1beta, admin_v1alpha
 from google.api_core.gapic_v1.client_info import ClientInfo
 from importlib import metadata
 import google.auth
+import json
 import proto
 
 
@@ -116,4 +117,4 @@ def proto_to_dict(obj: proto.Message) -> Dict[str, Any]:
 
 def proto_to_json(obj: proto.Message) -> str:
     """Converts a proto message to a JSON string."""
-    return type(obj).to_json(obj, indent=None, preserving_proto_field_name=True)
+    return json.dumps(proto_to_dict(obj))
